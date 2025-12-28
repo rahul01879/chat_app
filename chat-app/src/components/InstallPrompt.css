@@ -1,0 +1,290 @@
+/* Install Prompt Base Styles */
+.install-prompt {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  animation: slideUp 0.3s ease-out;
+  max-width: 90%;
+}
+
+.install-prompt.manual {
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+  max-width: 400px;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.install-prompt-content {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-xl);
+  max-width: 400px;
+  min-width: 320px;
+}
+
+.install-prompt-content.manual-instructions {
+  flex-direction: column;
+  padding: 24px;
+  text-align: center;
+  position: relative;
+  max-width: 100%;
+}
+
+.install-prompt-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.manual-instructions .install-prompt-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 8px;
+}
+
+.install-prompt-text {
+  flex: 1;
+}
+
+.install-prompt-text h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.manual-instructions h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.install-prompt-text p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.install-prompt-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.install-btn {
+  padding: 8px 20px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.install-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.dismiss-btn {
+  width: 36px;
+  height: 36px;
+  background: var(--bg-secondary);
+  border: none;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.dismiss-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.dismiss-btn-top {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background: var(--bg-secondary);
+  border: none;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.dismiss-btn-top:hover {
+  background: var(--bg-tertiary);
+  transform: scale(1.1);
+}
+
+/* Manual Instructions Styles */
+.install-steps {
+  margin: 16px 0;
+  text-align: center;
+}
+
+.install-steps p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.install-steps strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.share-icon,
+.menu-icon {
+  display: inline-block;
+  font-size: 20px;
+  vertical-align: middle;
+  margin: 0 4px;
+  background: var(--bg-secondary);
+  padding: 2px 8px;
+  border-radius: var(--radius);
+}
+
+.install-visual {
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+}
+
+.ios-instruction,
+.android-instruction,
+.desktop-instruction {
+  display: block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-family: 'Courier New', monospace;
+}
+
+.got-it-btn {
+  margin-top: 20px;
+  padding: 10px 32px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  max-width: 200px;
+}
+
+.got-it-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .install-prompt {
+    left: 16px;
+    right: 16px;
+    transform: none;
+    bottom: 16px;
+    max-width: none;
+  }
+
+  .install-prompt.manual {
+    left: 16px;
+    right: 16px;
+    bottom: 50%;
+    transform: translateY(50%);
+  }
+
+  .install-prompt-content {
+    min-width: auto;
+    padding: 14px 16px;
+  }
+
+  .install-prompt-content.manual-instructions {
+    padding: 20px 16px;
+  }
+
+  .install-prompt-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .manual-instructions .install-prompt-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .install-prompt-text h3 {
+    font-size: 15px;
+  }
+
+  .manual-instructions h3 {
+    font-size: 18px;
+  }
+
+  .install-prompt-text p {
+    font-size: 12px;
+  }
+
+  .install-steps p {
+    font-size: 14px;
+  }
+}
+
+/* Animation for manual instructions */
+.install-prompt.manual {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 50%) scale(1);
+  }
+}

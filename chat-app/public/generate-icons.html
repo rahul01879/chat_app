@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate PWA Icons</title>
+</head>
+<body>
+    <h2>Click buttons to download icons</h2>
+    <canvas id="canvas192" width="192" height="192"></canvas>
+    <br>
+    <button onclick="download(192)">Download 192x192</button>
+    <br><br>
+    <canvas id="canvas512" width="512" height="512"></canvas>
+    <br>
+    <button onclick="download(512)">Download 512x512</button>
+
+    <script>
+        function drawIcon(size) {
+            const canvas = document.getElementById('canvas' + size);
+            const ctx = canvas.getContext('2d');
+            
+            // Gradient background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#6366f1');
+            gradient.addColorStop(1, '#8b5cf6');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Lock icon
+            ctx.strokeStyle = '#ffffff';
+            ctx.fillStyle = '#ffffff';
+            ctx.lineWidth = size * 0.05;
+            
+            const lockWidth = size * 0.4;
+            const lockHeight = size * 0.5;
+            const x = (size - lockWidth) / 2;
+            const y = (size - lockHeight) / 2;
+            
+            // Lock body
+            ctx.fillRect(x, y + lockHeight * 0.4, lockWidth, lockHeight * 0.6);
+            
+            // Lock shackle
+            ctx.beginPath();
+            ctx.arc(size / 2, y + lockHeight * 0.3, lockWidth * 0.35, Math.PI, 0, true);
+            ctx.stroke();
+            
+            // Keyhole
+            ctx.fillStyle = '#6366f1';
+            ctx.beginPath();
+            ctx.arc(size / 2, y + lockHeight * 0.6, size * 0.05, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillRect(size / 2 - size * 0.02, y + lockHeight * 0.6, size * 0.04, size * 0.12);
+        }
+        
+        drawIcon(192);
+        drawIcon(512);
+        
+        function download(size) {
+            const canvas = document.getElementById('canvas' + size);
+            const link = document.createElement('a');
+            link.download = 'icon-' + size + '.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>
